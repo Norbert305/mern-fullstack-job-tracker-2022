@@ -1,24 +1,20 @@
 
-const express = require('express');
+const express = require('express'); //common js module syntext 
 const router = express.Router();
+const {getUsers, postUser, editUser, deleteUser} = require('../controllers/userControllers')
 
 
+// router.route('/').get(getUsers).post(postUser) ---could use to save lines of code
+// router.route('/:id').delete(deleteUser).put(editUser)
 
-// router.get('/', (req,res)=>{
-//     res.send("This is our get method")
-// })
-router.get('/', (req,res)=>{
-    res.status(200).json({message: "This is our get method"})
-})
-router.post('/', (req,res)=>{
-    res.status(200).json({message: "This is our post method"})
-})
-router.put('/:id', (req,res)=>{
-    res.status(200).json({message: `This is our put method ${req.params.id}`})
-})
-router.delete('/:id', (req,res)=>{
-    res.status(200).json({message: `This is our delete method ${req.params.id}`})
-})
+
+//our routes
+router.get('/', getUsers)
+router.post('/', postUser)
+router.put('/:id', editUser)
+router.delete('/:id', deleteUser)
+
+
 
 
 module.exports = router
