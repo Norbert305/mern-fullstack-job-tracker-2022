@@ -27,3 +27,7 @@ code {
   flex-direction: column;
   justify-content: flex-start;
 }
+
+.home {
+  text-align: center;
+}

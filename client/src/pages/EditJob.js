@@ -1,9 +1,55 @@
-import React from "react";
+import React, {useState, useEffect} from "react";
 import { useNavigate } from "react-router-dom";
+// import { Axios } from "axios";
 
 export function EditJob () {
 
+//   const [job, setJob] = useState([]);
+
+//   useEffect((id) => {
+
+//     Axios.get(`http://localhost:5000/api/user/${id}`).then((response) => {
+//         setJob(response.data)
+//     });
+// }, [])
+
+
+//   const [user, setUser] = useState({
+// 		position: job.position,
+// 		company_name: job.company_name,
+// 		link: job.link,
+// 		date: job.data,
+// 		applied: job.applied,
+// 		notes: job.notes
+// 	})
+
+
+
+
+  // const handleChange = e => setUser({ ...user, [e.target.name]: e.target.value });
+
     let navigate = useNavigate();
+
+    // const update_User = (id) =>{
+
+    //   Axios.put(`http://localhost:5000/api/user/${id}`, {
+    //     ...user
+    //   }).then((response)=>{
+    //     console.log(response)
+    //     navigate('/jobpostings')
+    //   }).then(data => console.log(data))
+    //   .catch(err => console.error("Error:", err));
+    //     }
+    
+  //   const update_User = (id) =>{ 
+  //     Axios.put("http://localhost:3001/updateAge", {    
+  //     }).then(()=>{
+  //       setUser(user.map((val,index)=>{
+  //         return val._id === id ? {user : val.user} : val;
+  //       }))
+  //     })
+  //     navigate("/")
+  // }
 
 
 return (    <div>
@@ -25,6 +71,8 @@ return (    <div>
                 name="position_title"
                 id="position_title"
                 required
+                // onChange={handleChange}
+                // value={user.position}
               />
             </div>
             <div className="mb-3">
@@ -37,6 +85,8 @@ return (    <div>
                 name="company_name"
                 id="company_name"
                 required
+                // onChange={handleChange}
+                // value={user.company_name}
               />
             </div>
             <div className="mb-3">
@@ -48,6 +98,8 @@ return (    <div>
                 className="form-control"
                 name="link"
                 id="link"
+                // onChange={handleChange}
+                // value={user.link}
               />
             </div>
             <div className="mb-3">
@@ -59,6 +111,8 @@ return (    <div>
                 className="form-control"
                 name="date"
                 id="date"
+                // onChange={handleChange}
+                // value={user.date}
               />
             </div>
             <div className="mb-3">
@@ -70,6 +124,8 @@ return (    <div>
                 className="form-control"
                 name="applied"
                 id="applied"
+                // onChange={handleChange}
+                // value={user.applied}
               />
             </div>
             <div className="mb-3">
@@ -81,9 +137,11 @@ return (    <div>
                 rows="3"
                 id="notes"
                 name="notes"
+                // onChange={handleChange}
+                // value={user.notes}
               />
             </div>
-            <button type="submit" className="btn btn-primary" onClick={()=>{navigate("/jobpostings")}}>
+            <button type="submit" className="btn btn-primary" onClick={()=>navigate("/jobpostings")} >
               Save
             </button>
           </form>

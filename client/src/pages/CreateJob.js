@@ -14,27 +14,30 @@ export function AddNewJob () {
 		notes: ""
 	})
 
-    useEffect(()=>{
-
-        Axios.get("http://localhost:5000/api/user/").then((response)=>{
-              setUser(response.data)  
-          });
-          },[])
 
 
           const createUser = ()=> {
             Axios.post("http://localhost:5000/api/user/", {
               ...user
             }).then((response)=>{
-              alert("User Created");
+              console.log(response)
             }).then(data => console.log(data))
             .catch(err => console.error("Error:", err));
+              }
+
+
+              let navigate = useNavigate();
+
+           const handleSubmit = event => {
+                event.preventDefault();
+                createUser();
+                navigate("/jobpostings")
               }
 
     const handleChange = e => setUser({ ...user, [e.target.name]: e.target.value });
 
 
-    let navigate = useNavigate();
+  
 
 return (    <div>
     <div>
@@ -44,7 +47,7 @@ return (    <div>
       <div className="row">
         <div className="col-2"></div>
         <div className="col-8">
-          <form>
+          <form onSubmit={handleSubmit}>
             <div class="mb-3">
               <label for="position_title" className="form-label">
                 Position Title
@@ -54,6 +57,7 @@ return (    <div>
                 className="form-control"
                 name="position"
                 id="position"
+                value={user.position}
                 onChange={handleChange}
                 // required
               />
@@ -67,6 +71,7 @@ return (    <div>
                 className="form-control"
                 name="company_name"
                 id="company_name"
+                value={user.company_name}
                 onChange={handleChange}
                 // required
               />
@@ -80,6 +85,7 @@ return (    <div>
                 className="form-control"
                 name="link"
                 id="link"
+                value={user.link}
                 onChange={handleChange}
               />
             </div>
@@ -92,6 +98,7 @@ return (    <div>
                 className="form-control"
                 name="date"
                 id="date"
+                value={user.date}
                 onChange={handleChange}
               />
             </div>
@@ -104,6 +111,7 @@ return (    <div>
                 className="form-control"
                 name="applied"
                 id="applied"
+                value={user.applied}
                 onChange={handleChange}
               />
             </div>
@@ -116,10 +124,11 @@ return (    <div>
                 rows="3"
                 id="notes"
                 name="notes"
+                value={user.notes}
                 onChange={handleChange}
               />
             </div>
-            <button type="submit" className="btn btn-primary" onClick={()=>{navigate("/jobpostings");createUser()}}>
+            <button type="submit" className="btn btn-primary">
               Submit
             </button>
           </form>
