@@ -58,7 +58,7 @@ export function JobsCard() {
                                 <h5 className="card-title">Applied:{value.applied}</h5>
                                 <h5 className="card-title">Notes:{value.notes}</h5>
                                 <p></p>
-                                <button className="btn btn-warning" onClick={()=>navigate("/editjobs")}>Edit</button>
+                                <button className="btn btn-warning" onClick={() => { navigate(`/editjobs/${value._id}`) }}>Edit</button>
                                 <p></p>
                                 <button className="btn btn-danger" onClick={() => {
                                     delete_User(value._id); 
@@ -81,4 +81,3 @@ export function JobsCard() {
 
 }
 
-// onClick={() => { navigate(`/editjobs/${value._id}`) }}

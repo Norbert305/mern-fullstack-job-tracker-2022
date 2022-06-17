@@ -1,55 +1,49 @@
 import React, {useState, useEffect} from "react";
-import { useNavigate } from "react-router-dom";
-// import { Axios } from "axios";
+import { useNavigate, useParams } from "react-router-dom";
+import Axios from "axios";
+
 
 export function EditJob () {
 
-//   const [job, setJob] = useState([]);
+  const { id } = useParams();
+  const [job, setJob] = useState({})
+ 
+const getJob = () => {
 
-//   useEffect((id) => {
+  Axios.get(`http://localhost:5000/api/user/${id}`).then((response)=>{
+    // console.log(response)
+    const myJob = response.data;
+  setJob(myJob)
+  })
+}
 
-//     Axios.get(`http://localhost:5000/api/user/${id}`).then((response) => {
-//         setJob(response.data)
-//     });
-// }, [])
+useEffect(()=>getJob(), []);
 
 
-//   const [user, setUser] = useState({
-// 		position: job.position,
-// 		company_name: job.company_name,
-// 		link: job.link,
-// 		date: job.data,
-// 		applied: job.applied,
-// 		notes: job.notes
-// 	})
-
+let navigate = useNavigate()
+ 
 
 
 
-  // const handleChange = e => setUser({ ...user, [e.target.name]: e.target.value });
+  const handleSubmit = event => {
+    event.preventDefault();
+    update_User()
+    navigate("/jobpostings")
+  }
 
-    let navigate = useNavigate();
+  const handleChange = e => setJob({ ...job, [e.target.name]: e.target.value });
 
-    // const update_User = (id) =>{
-
-    //   Axios.put(`http://localhost:5000/api/user/${id}`, {
-    //     ...user
-    //   }).then((response)=>{
-    //     console.log(response)
-    //     navigate('/jobpostings')
-    //   }).then(data => console.log(data))
-    //   .catch(err => console.error("Error:", err));
-    //     }
     
-  //   const update_User = (id) =>{ 
-  //     Axios.put("http://localhost:3001/updateAge", {    
-  //     }).then(()=>{
-  //       setUser(user.map((val,index)=>{
-  //         return val._id === id ? {user : val.user} : val;
-  //       }))
-  //     })
-  //     navigate("/")
-  // }
+    const update_User = () =>{ 
+      Axios.put(`http://localhost:5000/api/user/${id}`, {
+        ...job
+      }).then((response)=>{
+        console.log(response)
+      }).then(data => console.log(data))
+      .catch(err => console.error("Error:", err));
+      navigate("/jobpostings")
+  }
+
 
 
 return (    <div>
@@ -60,19 +54,19 @@ return (    <div>
       <div className="row">
         <div className="col-2"></div>
         <div className="col-8">
-          <form>
+          <form onSubmit={handleSubmit}>
             <div class="mb-3">
-              <label for="position_title" className="form-label">
+              <label for="position" className="form-label">
                 Position Title
               </label>
               <input
                 type="text"
                 className="form-control"
-                name="position_title"
-                id="position_title"
-                required
-                // onChange={handleChange}
-                // value={user.position}
+                name="position"
+                id="position"
+                // required
+                onChange={handleChange}
+                value={job.position}
               />
             </div>
             <div className="mb-3">
@@ -84,9 +78,9 @@ return (    <div>
                 className="form-control"
                 name="company_name"
                 id="company_name"
-                required
-                // onChange={handleChange}
-                // value={user.company_name}
+                // required
+                onChange={handleChange}
+                value={job.company_name}
               />
             </div>
             <div className="mb-3">
@@ -98,8 +92,8 @@ return (    <div>
                 className="form-control"
                 name="link"
                 id="link"
-                // onChange={handleChange}
-                // value={user.link}
+                onChange={handleChange}
+                value={job.link}
               />
             </div>
             <div className="mb-3">
@@ -107,12 +101,12 @@ return (    <div>
                 Date
               </label>
               <input
-                type="date"
+                type="text"
                 className="form-control"
                 name="date"
                 id="date"
-                // onChange={handleChange}
-                // value={user.date}
+                onChange={handleChange}
+                value={job.date}
               />
             </div>
             <div className="mb-3">
@@ -124,8 +118,8 @@ return (    <div>
                 className="form-control"
                 name="applied"
                 id="applied"
-                // onChange={handleChange}
-                // value={user.applied}
+                onChange={handleChange}
+                value={job.applied}
               />
             </div>
             <div className="mb-3">
@@ -137,13 +131,15 @@ return (    <div>
                 rows="3"
                 id="notes"
                 name="notes"
-                // onChange={handleChange}
-                // value={user.notes}
+                onChange={handleChange}
+                value={job.notes}
               />
             </div>
-            <button type="submit" className="btn btn-primary" onClick={()=>navigate("/jobpostings")} >
+        
+            <button type="submit" className="btn btn-primary" onChange={()=>update_User(id)}>
               Save
             </button>
+         
           </form>
           <div className="col-2"></div>
         </div>
@@ -153,3 +149,4 @@ return (    <div>
 
 
 }
+

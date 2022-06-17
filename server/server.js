@@ -10,10 +10,11 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 const cors = require("cors");
 
+
 app.use(cors());
 connectDB()//conncts our atlis cluster
 
-
+app.use(express.json());
 //allows us to connect our middleware to our routs.js file
 const myRoutes = require('./routes/routes')
 //middle-ware-routs

@@ -11,7 +11,7 @@ function App() {
      <Router>
       <NavBar />
        <Routes>
-         <Route path="/editjobs" element={<EditJob />}/>
+         <Route path="/editjobs/:id" element={<EditJob />}/>
       <Route path="/newjob" element={<AddNewJob />}/>
       <Route path="/jobpostings" element={<JobsCard />}/>
       <Route path="/" element={<HomePage />}/>
