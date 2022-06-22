@@ -31,3 +31,53 @@ code {
 .home {
   text-align: center;
 }
+
+
+.jobsText {
+  margin: 100px auto;
+}
+
+
+
+.BannerText {
+  color: white;
+  margin: 200px auto;
+}
+
+.jobHeaderText {
+  margin: 50px auto;
+}
+
+
+.InteractionHeader {
+  margin: 50px auto;
+  text-align: center;
+}
+
+.cb {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+.title {
+  text-align: center;
+}
+
+
+.aboutText {
+  text-align: center;
+}
+
+.aboutImg {
+  width: 100%;
+}
+
+@media only screen and (max-width: 600px) {
+  .navbar {
+   display: flex;
+   text-align: center;
+   flex-direction: column;
+   margin: 0 auto;
+  }
+}

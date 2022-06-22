@@ -1,5 +1,6 @@
 import {BrowserRouter as Router, Routes, Route,Link} from "react-router-dom";
 import {NavBar} from "./components/Nav";
+import { About } from "./pages/About";
 import { AddNewJob } from "./pages/CreateJob";
 import { EditJob } from "./pages/EditJob";
 import { HomePage } from "./pages/Home";
@@ -14,6 +15,7 @@ function App() {
          <Route path="/editjobs/:id" element={<EditJob />}/>
       <Route path="/newjob" element={<AddNewJob />}/>
       <Route path="/jobpostings" element={<JobsCard />}/>
+      <Route path="/about" element={<About />}/>
       <Route path="/" element={<HomePage />}/>
        </Routes>
      </Router>
