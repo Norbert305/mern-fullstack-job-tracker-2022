@@ -15,11 +15,11 @@ open backend:
 
 
 <hr/>
-<h3>About Page</h3>
+<h3>Home Page</h3>
 
 ![image](https://user-images.githubusercontent.com/83515541/175334952-7a86d4ce-12ba-4283-9c03-e06192389807.png)
 
-<h3>More of About Page</h3>
+<h3>More of Home Page</h3>
 
 ![image](https://user-images.githubusercontent.com/83515541/175335320-306ed21e-9716-48a6-803f-ae5917d783da.png)
 
