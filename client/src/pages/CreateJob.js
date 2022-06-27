@@ -39,7 +39,7 @@ export function AddNewJob () {
 
   
 
-return (    <div>
+return (    <div className="j">
     <div>
       <h1 className="text-center jobHeaderText">Add a Job</h1>
     </div>
@@ -128,9 +128,20 @@ return (    <div>
                 onChange={handleChange}
               />
             </div>
-            <button type="submit" className="btn btn-primary">
+            <button type="submit" className="btn btn-primary x">
               Submit
             </button>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
           </form>
           <div className="col-2"></div>
         </div>
