@@ -3,16 +3,22 @@
 commands in terminal:
 
 open frontend: 
-<p>cd client</p> 
+<p>cd client</p>
+<p>npm install</p>
 <p>npm run start</p>
 
 -----Use a split terminal
 
 open backend: 
 <p>cd server</p> 
+<p>npm install</p>
 <p>npm run server</p>
 
+# Must install MongoDB and create a free cluster string
 
+create .env file inside the server folder
+<p>port=5000</p>
+<p>DB_CONNECTION="Your_Mongo_DB_CONNECTION_STRING"</p>
 
 <hr/>
 <h3>Home Page</h3>
